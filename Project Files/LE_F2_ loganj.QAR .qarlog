@@ -1,0 +1,35 @@
+Quartus Prime Archive log --	C:/ece/2544/LE_F2/LE_F2_starter_restored/LE_F2_ loganj.QAR .qarlog
+
+Archive:	C:/ece/2544/LE_F2/LE_F2_starter_restored/LE_F2_ loganj.QAR .qar
+Date:		Sun Nov 21 18:48:39 2021
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2504SimpleComputer.sdc
+C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/SimpleComputer.qpf
+C:/ece/2544/LE_F2/LE_F2_starter_restored/SimpleComputer.qsf
+C:/ece/2544/LE_F2/LE_F2_starter_restored/SimpleComputer_assignment_defaults.qdf
+C:/ece/2544/LE_F2/LE_F2_starter_restored/Waveform.vwf
+C:/ece/2544/LE_F2/LE_F2_starter_restored/assignment_defaults.qdf
+C:/ece/2544/LE_F2/LE_F2_starter_restored/button_fsm.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/data.txt
+C:/ece/2544/LE_F2/LE_F2_starter_restored/decoder3to8enable.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/dual_port_ram.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/hexDecoder_7seg.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/instruction.txt
+C:/ece/2544/LE_F2/LE_F2_starter_restored/instruction_decoder.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/mux10to1_16bits.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/mux20to1_8bits.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/mux2to1_16bit.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/mux8to1_16bit.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/register_16bit.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_ram.v
+C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v
+	======= Total: 24 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

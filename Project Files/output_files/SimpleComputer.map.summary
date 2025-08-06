@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Tue Nov 30 23:21:35 2021
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : SimpleComputer
+Top-level Entity Name : ECE2544SimpleComputer
+Family : MAX 10
+Total logic elements : 8,054
+    Total combinational functions : 3,899
+    Dedicated logic registers : 4,243
+Total registers : 4243
+Total pins : 44
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

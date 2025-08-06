@@ -1,0 +1,1450 @@
+Analysis & Synthesis report for SimpleComputer
+Tue Nov 30 23:21:35 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Source assignments for cpu:cpu0
+ 11. Parameter Settings for User Entity Instance: button_fsm:button_fsm0
+ 12. Parameter Settings for User Entity Instance: cpu:cpu0|single_port_rom:instr_mem
+ 13. Parameter Settings for User Entity Instance: cpu:cpu0|single_port_ram:data_mem
+ 14. Port Connectivity Checks: "mux2to1_16bit:LED_mux"
+ 15. Port Connectivity Checks: "cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA15"
+ 16. Port Connectivity Checks: "cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA0"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Nov 30 23:21:35 2021       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; SimpleComputer                              ;
+; Top-level Entity Name              ; ECE2544SimpleComputer                       ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 8,054                                       ;
+;     Total combinational functions  ; 3,899                                       ;
+;     Dedicated logic registers      ; 4,243                                       ;
+; Total registers                    ; 4243                                        ;
+; Total pins                         ; 44                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                 ;
++------------------------------------------------------------------+-----------------------+--------------------+
+; Option                                                           ; Setting               ; Default Value      ;
++------------------------------------------------------------------+-----------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G        ;                    ;
+; Top-level entity name                                            ; ECE2544SimpleComputer ; SimpleComputer     ;
+; Family name                                                      ; MAX 10                ; Cyclone V          ;
+; Use smart compilation                                            ; Off                   ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                    ; On                 ;
+; Enable compact report table                                      ; Off                   ; Off                ;
+; Restructure Multiplexers                                         ; Auto                  ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                   ; Off                ;
+; Preserve fewer node names                                        ; On                    ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable                ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001          ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993             ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto                  ; Auto               ;
+; Safe State Machine                                               ; Off                   ; Off                ;
+; Extract Verilog State Machines                                   ; On                    ; On                 ;
+; Extract VHDL State Machines                                      ; On                    ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                   ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000                  ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                   ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                    ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                    ; On                 ;
+; Parallel Synthesis                                               ; On                    ; On                 ;
+; DSP Block Balancing                                              ; Auto                  ; Auto               ;
+; NOT Gate Push-Back                                               ; On                    ; On                 ;
+; Power-Up Don't Care                                              ; On                    ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                   ; Off                ;
+; Remove Duplicate Registers                                       ; On                    ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                   ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                   ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                   ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                   ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                   ; Off                ;
+; Ignore SOFT Buffers                                              ; On                    ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                   ; Off                ;
+; Optimization Technique                                           ; Balanced              ; Balanced           ;
+; Carry Chain Length                                               ; 70                    ; 70                 ;
+; Auto Carry Chains                                                ; On                    ; On                 ;
+; Auto Open-Drain Pins                                             ; On                    ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                   ; Off                ;
+; Auto ROM Replacement                                             ; On                    ; On                 ;
+; Auto RAM Replacement                                             ; On                    ; On                 ;
+; Auto DSP Block Replacement                                       ; On                    ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto                  ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto                  ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                    ; On                 ;
+; Strict RAM Replacement                                           ; Off                   ; Off                ;
+; Allow Synchronous Control Signals                                ; On                    ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                   ; Off                ;
+; Auto RAM Block Balancing                                         ; On                    ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                   ; Off                ;
+; Auto Resource Sharing                                            ; Off                   ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                   ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                   ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                   ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                    ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                   ; Off                ;
+; Timing-Driven Synthesis                                          ; On                    ; On                 ;
+; Report Parameter Settings                                        ; On                    ; On                 ;
+; Report Source Assignments                                        ; On                    ; On                 ;
+; Report Connectivity Checks                                       ; On                    ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                   ; Off                ;
+; Synchronization Register Chain Length                            ; 2                     ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation    ; Normal compilation ;
+; HDL message level                                                ; Level2                ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                   ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000                  ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000                  ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                   ; 100                ;
+; Clock MUX Protection                                             ; On                    ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                   ; Off                ;
+; Block Design Naming                                              ; Auto                  ; Auto               ;
+; SDC constraint protection                                        ; Off                   ; Off                ;
+; Synthesis Effort                                                 ; Auto                  ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                    ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                   ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium                ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto                  ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                    ; On                 ;
++------------------------------------------------------------------+-----------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.2%      ;
+;     Processor 3            ;   0.2%      ;
+;     Processor 4            ;   0.2%      ;
+;     Processor 5            ;   0.2%      ;
+;     Processor 6            ;   0.2%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                     ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------+---------+
+; instruction.txt                  ; yes             ; User File              ; C:/ece/2544/LE_F2/LE_F2_starter_restored/instruction.txt         ;         ;
+; data.txt                         ; yes             ; User File              ; C:/ece/2544/LE_F2/LE_F2_starter_restored/data.txt                ;         ;
+; single_port_ram.v                ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_ram.v       ;         ;
+; pc_controller.v                  ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v         ;         ;
+; function_unit.v                  ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v         ;         ;
+; dual_port_ram.v                  ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/dual_port_ram.v         ;         ;
+; cpu.v                            ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v                   ;         ;
+; button_fsm.v                     ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/button_fsm.v            ;         ;
+; hexDecoder_7seg.v                ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/hexDecoder_7seg.v       ;         ;
+; ECE2544SimpleComputer.v          ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v ;         ;
+; mux2to1_16bit.v                  ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/mux2to1_16bit.v         ;         ;
+; decoder3to8enable.v              ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/decoder3to8enable.v     ;         ;
+; mux8to1_16bit.v                  ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/mux8to1_16bit.v         ;         ;
+; instruction_decoder.v            ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/instruction_decoder.v   ;         ;
+; register_16bit.v                 ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/register_16bit.v        ;         ;
+; single_port_rom.v                ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v       ;         ;
+; mux10to1_16bits.v                ; yes             ; User Verilog HDL File  ; C:/ece/2544/LE_F2/LE_F2_starter_restored/mux10to1_16bits.v       ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Estimated Total logic elements              ; 8,054   ;
+;                                             ;         ;
+; Total combinational functions               ; 3899    ;
+; Logic element usage by number of LUT inputs ;         ;
+;     -- 4 input functions                    ; 3196    ;
+;     -- 3 input functions                    ; 407     ;
+;     -- <=2 input functions                  ; 296     ;
+;                                             ;         ;
+; Logic elements by mode                      ;         ;
+;     -- normal mode                          ; 3883    ;
+;     -- arithmetic mode                      ; 16      ;
+;                                             ;         ;
+; Total registers                             ; 4243    ;
+;     -- Dedicated logic registers            ; 4243    ;
+;     -- I/O registers                        ; 0       ;
+;                                             ;         ;
+; I/O pins                                    ; 44      ;
+;                                             ;         ;
+; Embedded Multiplier 9-bit elements          ; 0       ;
+;                                             ;         ;
+; Maximum fan-out node                        ; cpu_clk ;
+; Maximum fan-out                             ; 4240    ;
+; Total fan-out                               ; 27176   ;
+; Average fan-out                             ; 3.30    ;
++---------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                       ;
++-------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                     ; Entity Name           ; Library Name ;
++-------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+-----------------------+--------------+
+; |ECE2544SimpleComputer              ; 3899 (1)            ; 4243 (2)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 44   ; 0            ; 0          ; |ECE2544SimpleComputer                                                                  ; ECE2544SimpleComputer ; work         ;
+;    |button_fsm:button_fsm0|         ; 2 (2)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|button_fsm:button_fsm0                                           ; button_fsm            ; work         ;
+;    |cpu:cpu0|                       ; 3763 (341)          ; 4240 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0                                                         ; cpu                   ; work         ;
+;       |dual_port_ram:register_file| ; 154 (0)             ; 128 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file                             ; dual_port_ram         ; work         ;
+;          |mux8to1_16bit:operandA|   ; 64 (64)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|mux8to1_16bit:operandA      ; mux8to1_16bit         ; work         ;
+;          |mux8to1_16bit:operandB|   ; 64 (64)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|mux8to1_16bit:operandB      ; mux8to1_16bit         ; work         ;
+;          |register_16bit:reg0|      ; 17 (17)             ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg0         ; register_16bit        ; work         ;
+;          |register_16bit:reg1|      ; 2 (2)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg1         ; register_16bit        ; work         ;
+;          |register_16bit:reg2|      ; 1 (1)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg2         ; register_16bit        ; work         ;
+;          |register_16bit:reg3|      ; 1 (1)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg3         ; register_16bit        ; work         ;
+;          |register_16bit:reg4|      ; 1 (1)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg4         ; register_16bit        ; work         ;
+;          |register_16bit:reg5|      ; 2 (2)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg5         ; register_16bit        ; work         ;
+;          |register_16bit:reg6|      ; 1 (1)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg6         ; register_16bit        ; work         ;
+;          |register_16bit:reg7|      ; 1 (1)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg7         ; register_16bit        ; work         ;
+;       |function_unit:func_unit|     ; 158 (103)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit                                 ; function_unit         ; work         ;
+;          |arith_circuit:a1|         ; 54 (1)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1                ; arith_circuit         ; work         ;
+;             |Mux_a_6x1:ma0|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma0  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma10|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma10 ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma11|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma11 ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma12|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma12 ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma13|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma13 ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma14|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma14 ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma15|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma15 ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma1|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma1  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma2|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma2  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma3|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma3  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma4|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma4  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma5|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma5  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma6|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma6  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma7|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma7  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma8|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma8  ; Mux_a_6x1             ; work         ;
+;             |Mux_a_6x1:ma9|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma9  ; Mux_a_6x1             ; work         ;
+;             |Mux_b_6x1:mb0|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb0  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb10|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb10 ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb11|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb11 ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb12|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb12 ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb13|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb13 ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb14|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb14 ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb15|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb15 ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb1|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb1  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb2|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb2  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb3|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb3  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb4|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb4  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb5|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb5  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb6|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb6  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb7|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb7  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb8|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb8  ; Mux_b_6x1             ; work         ;
+;             |Mux_b_6x1:mb9|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb9  ; Mux_b_6x1             ; work         ;
+;             |full_adder:a0|         ; 17 (17)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|arith_circuit:a1|full_adder:a0  ; full_adder            ; work         ;
+;          |log:l1|                   ; 1 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|log:l1                          ; log                   ; work         ;
+;             |lmux:m15|              ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|function_unit:func_unit|log:l1|lmux:m15                 ; lmux                  ; work         ;
+;       |pc_controller:pc_ctrl|       ; 52 (48)             ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl                                   ; pc_controller         ; work         ;
+;          |incrementer:PCINC|        ; 4 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC                 ; incrementer           ; work         ;
+;             |halfadd:HA12|          ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA12    ; halfadd               ; work         ;
+;             |halfadd:HA3|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA3     ; halfadd               ; work         ;
+;             |halfadd:HA6|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA6     ; halfadd               ; work         ;
+;             |halfadd:HA9|           ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA9     ; halfadd               ; work         ;
+;       |single_port_ram:data_mem|    ; 3030 (3030)         ; 4096 (4096)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|single_port_ram:data_mem                                ; single_port_ram       ; work         ;
+;       |single_port_rom:instr_mem|   ; 28 (28)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|cpu:cpu0|single_port_rom:instr_mem                               ; single_port_rom       ; work         ;
+;    |hexDecoder_7seg:lower|          ; 14 (14)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|hexDecoder_7seg:lower                                            ; hexDecoder_7seg       ; work         ;
+;    |hexDecoder_7seg:upper|          ; 14 (14)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|hexDecoder_7seg:upper                                            ; hexDecoder_7seg       ; work         ;
+;    |mux10to1_16bits:HEX_mux|        ; 97 (97)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|mux10to1_16bits:HEX_mux                                          ; mux10to1_16bits       ; work         ;
+;    |mux2to1_16bit:LED_mux|          ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ECE2544SimpleComputer|mux2to1_16bit:LED_mux                                            ; mux2to1_16bit         ; work         ;
++-------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 4243  ;
+; Number of registers using Synchronous Clear  ; 16    ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4224  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg0|out[2]        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg1|out[6]        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg2|out[15]       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg3|out[14]       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg4|out[12]       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg5|out[12]       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg6|out[12]       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|register_16bit:reg7|out[7]        ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |ECE2544SimpleComputer|cpu:cpu0|pc_controller:pc_ctrl|PC[2]                                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|decoder3to8enable:addr_dec|out[6] ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|mux8to1_16bit:operandA|mux_out[2] ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |ECE2544SimpleComputer|cpu:cpu0|dual_port_ram:register_file|mux8to1_16bit:operandB|mux_out[2] ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 96 LEs               ; 64 LEs                 ; No         ; |ECE2544SimpleComputer|mux10to1_16bits:HEX_mux|mux_out[0]                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Source assignments for cpu:cpu0                                     ;
++------------------------------+-------+------+-----------------------+
+; Assignment                   ; Value ; From ; To                    ;
++------------------------------+-------+------+-----------------------+
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[15]                ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[15]                ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[14]                ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[14]                ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[13]                ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[13]                ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[12]                ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[12]                ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[11]                ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[11]                ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[10]                ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[10]                ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[9]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[9]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[8]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[8]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[7]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[7]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[6]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[6]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[5]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[5]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[4]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[4]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[3]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[3]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[2]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[2]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[1]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[1]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AD[0]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AD[0]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[15]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[15]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[14]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[14]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[13]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[13]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[12]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[12]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[11]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[11]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[10]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[10]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[9]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[9]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[8]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[8]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[7]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[7]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[6]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[6]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[5]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[5]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[4]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[4]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[3]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[3]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[2]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[2]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[1]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[1]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; register_file_in[0]   ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; register_file_in[0]   ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[15]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[15]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[14]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[14]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[13]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[13]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[12]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[12]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[11]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[11]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[10]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[10]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[9]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[9]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[8]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[8]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[7]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[7]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[6]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[6]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[5]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[5]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[4]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[4]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[3]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[3]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[2]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[2]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[1]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[1]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; constant[0]           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; constant[0]           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; IR[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; IR[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r0[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r0[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r1[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r1[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r2[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r2[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r3[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r3[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r4[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r4[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r5[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r5[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r6[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r6[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; r7[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; r7[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[15]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[15]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[14]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[14]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[13]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[13]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[12]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[12]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[11]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[11]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[10]~buf0           ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[10]~buf0           ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[9]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[9]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[8]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[8]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[7]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[7]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[6]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[6]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[5]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[5]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[4]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[4]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[3]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[3]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[2]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[2]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[1]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[1]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PC[0]~buf0            ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PC[0]~buf0            ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[15]             ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[15]             ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[14]             ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[14]             ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[13]             ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[13]             ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[12]             ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[12]             ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[11]             ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[11]             ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[10]             ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[10]             ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[9]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[9]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[8]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[8]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[7]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[7]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[6]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[6]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[5]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[5]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[4]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[4]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[3]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[3]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[2]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[2]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[1]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[1]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; instr[0]              ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; instr[0]              ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; DA[2]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; DA[2]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; DA[1]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; DA[1]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; DA[0]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; DA[0]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AA[2]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AA[2]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AA[1]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AA[1]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; AA[0]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; AA[0]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; BA[2]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; BA[2]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; BA[1]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; BA[1]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; BA[0]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; BA[0]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; MB                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; MB                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; FS[3]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; FS[3]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; FS[2]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; FS[2]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; FS[1]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; FS[1]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; FS[0]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; FS[0]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; MD                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; MD                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; RW                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; RW                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; MW                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; MW                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; PL                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; PL                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; JB                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; JB                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; BC                    ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; BC                    ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; V                     ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; V                     ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; C                     ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; C                     ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; N                     ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; N                     ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; Z                     ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; Z                     ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[15]      ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[15]      ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[14]      ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[14]      ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[13]      ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[13]      ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[12]      ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[12]      ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[11]      ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[11]      ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[10]      ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[10]      ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[9]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[9]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[8]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[8]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[7]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[7]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[6]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[6]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[5]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[5]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[4]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[4]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[3]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[3]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[2]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[2]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[1]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[1]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; data_mem_out[0]       ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; data_mem_out[0]       ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[15]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[15]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[14]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[14]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[13]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[13]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[12]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[12]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[11]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[11]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[10]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[10]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[9]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[9]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[8]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[8]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[7]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[7]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[6]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[6]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[5]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[5]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[4]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[4]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[3]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[3]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[2]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[2]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[1]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[1]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; A[0]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; A[0]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[15]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[15]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[14]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[14]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[13]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[13]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[12]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[12]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[11]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[11]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[10]                 ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[10]                 ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[9]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[9]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[8]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[8]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[7]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[7]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[6]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[6]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[5]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[5]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[4]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[4]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[3]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[3]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[2]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[2]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[1]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[1]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; B[0]                  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; B[0]                  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[15]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[15]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[14]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[14]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[13]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[13]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[12]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[12]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[11]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[11]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[10]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[10]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[9]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[9]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[8]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[8]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[7]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[7]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[6]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[6]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[5]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[5]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[4]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[4]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[3]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[3]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[2]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[2]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[1]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[1]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_b_out[0]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_b_out[0]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[15] ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[15] ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[14] ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[14] ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[13] ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[13] ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[12] ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[12] ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[11] ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[11] ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[10] ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[10] ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[9]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[9]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[8]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[8]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[7]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[7]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[6]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[6]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[5]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[5]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[4]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[4]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[3]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[3]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[2]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[2]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[1]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[1]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; function_unit_out[0]  ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; function_unit_out[0]  ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[15]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[15]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[14]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[14]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[13]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[13]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[12]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[12]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[11]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[11]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[10]         ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[10]         ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[9]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[9]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[8]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[8]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[7]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[7]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[6]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[6]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[5]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[5]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[4]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[4]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[3]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[3]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[2]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[2]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[1]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[1]          ;
+; IGNORE_LCELL_BUFFERS         ; off   ; -    ; mux_d_out[0]          ;
+; REMOVE_REDUNDANT_LOGIC_CELLS ; off   ; -    ; mux_d_out[0]          ;
++------------------------------+-------+------+-----------------------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: button_fsm:button_fsm0 ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; s0             ; 0     ; Unsigned Binary                            ;
+; s1             ; 1     ; Unsigned Binary                            ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu:cpu0|single_port_rom:instr_mem ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; ADDR_WIDTH     ; 10    ; Signed Integer                                         ;
+; DATA_WIDTH     ; 16    ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu:cpu0|single_port_ram:data_mem ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; ADDR_WIDTH     ; 8     ; Signed Integer                                        ;
+; DATA_WIDTH     ; 16    ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mux2to1_16bit:LED_mux"                                                                                                                        ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                       ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; in0  ; Input  ; Warning  ; Input port expression (8 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "in0[15..8]" will be connected to GND. ;
+; in1  ; Input  ; Warning  ; Input port expression (8 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "in1[15..8]" will be connected to GND. ;
+; q    ; Output ; Warning  ; Output or bidir port (16 bits) is wider than the port expression (8 bits) it drives; bit(s) "q[15..8]" have no fanouts                        ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA15"                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; C    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA0" ;
++------+-------+----------+----------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                        ;
++------+-------+----------+----------------------------------------------------------------+
+; Y    ; Input ; Info     ; Stuck at VCC                                                   ;
++------+-------+----------+----------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 44                          ;
+; cycloneiii_ff         ; 4243                        ;
+;     ENA               ; 4224                        ;
+;     SCLR SLD          ; 16                          ;
+;     plain             ; 3                           ;
+; cycloneiii_lcell_comb ; 3899                        ;
+;     arith             ; 16                          ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 15                          ;
+;     normal            ; 3883                        ;
+;         0 data inputs ; 13                          ;
+;         1 data inputs ; 233                         ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 392                         ;
+;         4 data inputs ; 3196                        ;
+;                       ;                             ;
+; Max LUT depth         ; 19.00                       ;
+; Average LUT depth     ; 12.29                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:06     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Tue Nov 30 23:21:19 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SimpleComputer -c SimpleComputer
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file single_port_ram.v
+    Info (12023): Found entity 1: single_port_ram File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_ram.v Line: 19
+Info (12021): Found 3 design units, including 3 entities, in source file pc_controller.v
+    Info (12023): Found entity 1: pc_controller File: C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v Line: 26
+    Info (12023): Found entity 2: incrementer File: C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v Line: 65
+    Info (12023): Found entity 3: halfadd File: C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v Line: 89
+Info (12021): Found 9 design units, including 9 entities, in source file function_unit.v
+    Info (12023): Found entity 1: function_unit File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 29
+    Info (12023): Found entity 2: arith_circuit File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 76
+    Info (12023): Found entity 3: full_adder File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 163
+    Info (12023): Found entity 4: Mux_a_6x1 File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 173
+    Info (12023): Found entity 5: Mux_b_6x1 File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 184
+    Info (12023): Found entity 6: log File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 198
+    Info (12023): Found entity 7: lmux File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 226
+    Info (12023): Found entity 8: shift File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 247
+    Info (12023): Found entity 9: muxs File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 278
+Info (12021): Found 1 design units, including 1 entities, in source file dual_port_ram.v
+    Info (12023): Found entity 1: dual_port_ram File: C:/ece/2544/LE_F2/LE_F2_starter_restored/dual_port_ram.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
+    Info (12023): Found entity 1: cpu File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file button_fsm.v
+    Info (12023): Found entity 1: button_fsm File: C:/ece/2544/LE_F2/LE_F2_starter_restored/button_fsm.v Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file hexdecoder_7seg.v
+    Info (12023): Found entity 1: hexDecoder_7seg File: C:/ece/2544/LE_F2/LE_F2_starter_restored/hexDecoder_7seg.v Line: 18
+Info (12021): Found 1 design units, including 1 entities, in source file ece2544simplecomputer.v
+    Info (12023): Found entity 1: ECE2544SimpleComputer File: C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v Line: 48
+Info (12021): Found 1 design units, including 1 entities, in source file mux2to1_16bit.v
+    Info (12023): Found entity 1: mux2to1_16bit File: C:/ece/2544/LE_F2/LE_F2_starter_restored/mux2to1_16bit.v Line: 15
+Info (12021): Found 1 design units, including 1 entities, in source file decoder3to8enable.v
+    Info (12023): Found entity 1: decoder3to8enable File: C:/ece/2544/LE_F2/LE_F2_starter_restored/decoder3to8enable.v Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file mux8to1_16bit.v
+    Info (12023): Found entity 1: mux8to1_16bit File: C:/ece/2544/LE_F2/LE_F2_starter_restored/mux8to1_16bit.v Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file instruction_decoder.v
+    Info (12023): Found entity 1: instruction_decoder File: C:/ece/2544/LE_F2/LE_F2_starter_restored/instruction_decoder.v Line: 13
+Info (12021): Found 1 design units, including 1 entities, in source file register_16bit.v
+    Info (12023): Found entity 1: register_16bit File: C:/ece/2544/LE_F2/LE_F2_starter_restored/register_16bit.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file single_port_rom.v
+    Info (12023): Found entity 1: single_port_rom File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file mux20to1_8bits.v
+    Info (12023): Found entity 1: mux20to1_8bits File: C:/ece/2544/LE_F2/LE_F2_starter_restored/mux20to1_8bits.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file mux10to1_16bits.v
+    Info (12023): Found entity 1: mux10to1_16bits File: C:/ece/2544/LE_F2/LE_F2_starter_restored/mux10to1_16bits.v Line: 17
+Warning (10236): Verilog HDL Implicit Net warning at function_unit.v(255): created implicit net for "low" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 255
+Info (12127): Elaborating entity "ECE2544SimpleComputer" for the top level hierarchy
+Info (12128): Elaborating entity "button_fsm" for hierarchy "button_fsm:button_fsm0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v Line: 87
+Info (12128): Elaborating entity "cpu" for hierarchy "cpu:cpu0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v Line: 103
+Info (12128): Elaborating entity "pc_controller" for hierarchy "cpu:cpu0|pc_controller:pc_ctrl" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 82
+Info (12128): Elaborating entity "incrementer" for hierarchy "cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v Line: 60
+Info (12128): Elaborating entity "halfadd" for hierarchy "cpu:cpu0|pc_controller:pc_ctrl|incrementer:PCINC|halfadd:HA0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/pc_controller.v Line: 70
+Info (12128): Elaborating entity "single_port_rom" for hierarchy "cpu:cpu0|single_port_rom:instr_mem" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 88
+Warning (10850): Verilog HDL warning at single_port_rom.v(30): number of words (1020) in memory file does not match the number of elements in the address range [0:1023] File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v Line: 30
+Warning (10030): Net "rom.data_a" at single_port_rom.v(26) has no driver or initial value, using a default initial value '0' File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v Line: 26
+Warning (10030): Net "rom.waddr_a" at single_port_rom.v(26) has no driver or initial value, using a default initial value '0' File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v Line: 26
+Warning (10030): Net "rom.we_a" at single_port_rom.v(26) has no driver or initial value, using a default initial value '0' File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v Line: 26
+Info (12128): Elaborating entity "instruction_decoder" for hierarchy "cpu:cpu0|instruction_decoder:instr_decoder" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 93
+Info (12128): Elaborating entity "single_port_ram" for hierarchy "cpu:cpu0|single_port_ram:data_mem" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 101
+Info (12128): Elaborating entity "dual_port_ram" for hierarchy "cpu:cpu0|dual_port_ram:register_file" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 112
+Info (12128): Elaborating entity "register_16bit" for hierarchy "cpu:cpu0|dual_port_ram:register_file|register_16bit:reg0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/dual_port_ram.v Line: 40
+Info (12128): Elaborating entity "decoder3to8enable" for hierarchy "cpu:cpu0|dual_port_ram:register_file|decoder3to8enable:addr_dec" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/dual_port_ram.v Line: 50
+Info (12128): Elaborating entity "mux8to1_16bit" for hierarchy "cpu:cpu0|dual_port_ram:register_file|mux8to1_16bit:operandA" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/dual_port_ram.v Line: 53
+Info (12128): Elaborating entity "mux2to1_16bit" for hierarchy "cpu:cpu0|mux2to1_16bit:mux_b" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 121
+Info (12128): Elaborating entity "function_unit" for hierarchy "cpu:cpu0|function_unit:func_unit" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 126
+Info (12128): Elaborating entity "arith_circuit" for hierarchy "cpu:cpu0|function_unit:func_unit|arith_circuit:a1" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 40
+Info (12128): Elaborating entity "Mux_a_6x1" for hierarchy "cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_a_6x1:ma0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 86
+Info (12128): Elaborating entity "Mux_b_6x1" for hierarchy "cpu:cpu0|function_unit:func_unit|arith_circuit:a1|Mux_b_6x1:mb0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 87
+Info (12128): Elaborating entity "full_adder" for hierarchy "cpu:cpu0|function_unit:func_unit|arith_circuit:a1|full_adder:a0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 138
+Info (12128): Elaborating entity "log" for hierarchy "cpu:cpu0|function_unit:func_unit|log:l1" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 41
+Info (12128): Elaborating entity "lmux" for hierarchy "cpu:cpu0|function_unit:func_unit|log:l1|lmux:m0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 203
+Info (12128): Elaborating entity "shift" for hierarchy "cpu:cpu0|function_unit:func_unit|shift:s1" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 42
+Info (12128): Elaborating entity "muxs" for hierarchy "cpu:cpu0|function_unit:func_unit|shift:s1|muxs:ms0" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 252
+Info (12128): Elaborating entity "mux10to1_16bits" for hierarchy "mux10to1_16bits:HEX_mux" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v Line: 117
+Info (12128): Elaborating entity "hexDecoder_7seg" for hierarchy "hexDecoder_7seg:upper" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/ECE2544SimpleComputer.v Line: 121
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "cpu:cpu0|function_unit:func_unit|shift:s1|low" is missing source, defaulting to GND File: C:/ece/2544/LE_F2/LE_F2_starter_restored/function_unit.v Line: 255
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/ece/2544/LE_F2/LE_F2_starter_restored/db/SimpleComputer.ram0_single_port_rom_c4e0cfba.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276013): RAM logic "cpu:cpu0|single_port_rom:instr_mem|rom" is uninferred because MIF is not supported for the selected family File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_rom.v Line: 26
+    Info (276013): RAM logic "cpu:cpu0|single_port_ram:data_mem|ram" is uninferred because MIF is not supported for the selected family File: C:/ece/2544/LE_F2/LE_F2_starter_restored/single_port_ram.v Line: 30
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/ece/2544/LE_F2/LE_F2_starter_restored/db/SimpleComputer.ram0_single_port_rom_c4e0cfba.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "cpu:cpu0|PC[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|PC[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 39
+    Info (17048): Logic cell "cpu:cpu0|r5[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|r5[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 35
+    Info (17048): Logic cell "cpu:cpu0|r6[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 36
+    Info (17048): Logic cell "cpu:cpu0|r4[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 34
+    Info (17048): Logic cell "cpu:cpu0|r7[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 37
+    Info (17048): Logic cell "cpu:cpu0|r2[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 32
+    Info (17048): Logic cell "cpu:cpu0|r1[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 31
+    Info (17048): Logic cell "cpu:cpu0|r0[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 30
+    Info (17048): Logic cell "cpu:cpu0|r3[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 33
+    Info (17048): Logic cell "cpu:cpu0|IR[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 135
+    Info (17048): Logic cell "cpu:cpu0|AD[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|JB" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 55
+    Info (17048): Logic cell "cpu:cpu0|AD[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|AD[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 57
+    Info (17048): Logic cell "cpu:cpu0|DA[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 46
+    Info (17048): Logic cell "cpu:cpu0|DA[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 46
+    Info (17048): Logic cell "cpu:cpu0|RW" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 52
+    Info (17048): Logic cell "cpu:cpu0|DA[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 46
+    Info (17048): Logic cell "cpu:cpu0|FS[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 50
+    Info (17048): Logic cell "cpu:cpu0|FS[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 50
+    Info (17048): Logic cell "cpu:cpu0|FS[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 50
+    Info (17048): Logic cell "cpu:cpu0|AA[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 47
+    Info (17048): Logic cell "cpu:cpu0|AA[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 47
+    Info (17048): Logic cell "cpu:cpu0|AA[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 47
+    Info (17048): Logic cell "cpu:cpu0|constant[15]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|MB" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 49
+    Info (17048): Logic cell "cpu:cpu0|constant[14]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[13]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[12]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[11]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[10]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[9]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[8]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[7]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[6]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[5]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[4]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[3]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|constant[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 64
+    Info (17048): Logic cell "cpu:cpu0|MD" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 51
+    Info (17048): Logic cell "cpu:cpu0|BA[0]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 48
+    Info (17048): Logic cell "cpu:cpu0|BA[1]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 48
+    Info (17048): Logic cell "cpu:cpu0|BA[2]" File: C:/ece/2544/LE_F2/LE_F2_starter_restored/cpu.v Line: 48
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 8130 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 36 output pins
+    Info (21061): Implemented 8086 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 4823 megabytes
+    Info: Processing ended: Tue Nov 30 23:21:35 2021
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:26
+
+

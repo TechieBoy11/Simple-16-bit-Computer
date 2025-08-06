@@ -1,0 +1,94 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// File: pc_controller.v
+//
+// Description: This is a model of the Program Counter controller for the Simple Computer.
+//
+//              The Program Counter's next value depends on the kind of instruction being executed.
+//              - The Jump instruction uses an address value from the instruction's target register
+//                as its destination.
+//              - The Branch instructions use an address offset contained in the instruction code,
+//                and are also dependent in part upon status flags N and Z.
+//              - All other instructions cause PC to advance to the next consecutive instruction.
+//
+// Created: 06/2012, Xin Xin, Virginia Tech
+// Modified by KLC, Nov 2015 to fix R6/R7 LED viewing.
+// Modified by Addison Ferrari, July 2019 to reduce amount of procedural verilog and increase
+//          readability.
+// Modified by JST, October 2019 to remove hidden control references.
+// Modified by KLC, March 2020 to remove "+" operator
+// Modified by KLC, Feb 2021 to eliminate "half_adder" name conflict
+//
+// ** Note that this modules uses Verilog constructs that you are NOT permitted to use in your code ** 
+// 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+module pc_controller(clock, reset, V, C, N, Z, PL, JB, BC, branch_offset, jump_addr, PC);
+	input         clock;				// CPU clock
+	input         reset;				// CPU reset
+	input         V;					// Overflow status bit
+	input         C;					// Carry status bit
+	input         N;					// Negative status bit
+	input         Z;					// Zero status bit
+	input         PL;					// Program Counter Load
+	input         JB;					// Jump/Branch Control
+	input         BC;					// Branch Condition
+	input  [15:0] jump_addr;		// Jump Address
+	input  [15:0] branch_offset;	// Branch Offset
+	output [15:0] PC;					// PC value
+	reg    [15:0] PC;
+
+	wire   [15:0] next_pc;
+	wire   [15:0] pc_inc;
+
+	// Register that increments the PC at every positive clock edge
+	always@(posedge clock) begin
+		if(reset)
+			PC <= 16'h0000;
+		else
+			PC <= next_pc;
+	end
+	
+	// Logic to decide what is the next PC value based upon the control bits (PL, JB, BC) and the status bits (N, Z)
+	// YOU WILL HAVE TO MODIFY THIS LOGIC IN LEARNING EXPERIENCE F.3.
+
+   assign next_pc = (reset == 1'b1)                           ? 16'h0000           :	// Reset: next_PC = 0
+                    (PL&JB == 1'b1)                           ? jump_addr          :	// JUMP: next_PC = jump_address
+						  (PL&~JB&~N&~Z == 1'b1)                    ? branch_offset      :	// branch: next_PC = jump_address
+                                                                pc_inc;			         // Default: next_PC = PC + 1 
+
+   incrementer PCINC (pc_inc, PC);
+
+endmodule
+
+
+module incrementer (inc_output, inc_input);
+   input [15:0] inc_input;
+	output [15:0] inc_output;
+	wire [16:1] C;
+	
+	halfadd HA0 (inc_output[0], C[1], inc_input[0], 1'b1);
+	halfadd HA1 (inc_output[1], C[2], inc_input[1], C[1]);
+	halfadd HA2 (inc_output[2], C[3], inc_input[2], C[2]);
+	halfadd HA3 (inc_output[3], C[4], inc_input[3], C[3]);
+	halfadd HA4 (inc_output[4], C[5], inc_input[4], C[4]);
+	halfadd HA5 (inc_output[5], C[6], inc_input[5], C[5]);
+	halfadd HA6 (inc_output[6], C[7], inc_input[6], C[6]);
+	halfadd HA7 (inc_output[7], C[8], inc_input[7], C[7]);
+	halfadd HA8 (inc_output[8], C[9], inc_input[8], C[8]);
+	halfadd HA9 (inc_output[9], C[10], inc_input[9], C[9]);
+	halfadd HA10 (inc_output[10], C[11], inc_input[10], C[10]);
+	halfadd HA11 (inc_output[11], C[12], inc_input[11], C[11]);
+	halfadd HA12 (inc_output[12], C[13], inc_input[12], C[12]);
+	halfadd HA13 (inc_output[13], C[14], inc_input[13], C[13]);
+	halfadd HA14 (inc_output[14], C[15], inc_input[14], C[14]);
+	halfadd HA15 (inc_output[15], C[16], inc_input[15], C[15]);
+
+endmodule 
+
+module halfadd (S,C,X,Y);
+   input X, Y;
+	output S, C;
+	assign S = X^Y;
+	assign C = X&Y;
+endmodule

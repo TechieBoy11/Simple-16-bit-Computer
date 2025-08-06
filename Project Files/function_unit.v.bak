@@ -1,0 +1,19 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// File: function_unit.v
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+module function_unit(FS, A, B, result, V, C, N, Z);
+	input   [3:0] FS;				// Function Unit select code.
+   input  [15:0] A;				// Function Unit operand A
+   input  [15:0] B;				// Function Unit operand B
+   output [15:0] result;		// Function Unit result
+   output        V;				// Overflow status bit
+   output        C;				// Carry-out status bit
+   output        N;				// Negative status bit
+   output        Z;				// Zero status bit
+	
+	
+	
+endmodule
